@@ -26,7 +26,8 @@ module PullReview
       def initialize(config)
         @config = config || Config.new
       end
-      #
+
+      # post json payload to pullreview host.
       def publish(payload)
         allow_pullreview_webmock
         allow_pullreview_vcr
@@ -35,9 +36,9 @@ module PullReview
 
       private
 
+      # post the payload and return exception if error occured.
       def post(payload)
         response = http(config.api_uri).request(zipped_post(config.api_uri, payload))
-
         if response.code.to_i >= 200 && response.code.to_i < 300
           response
         else
@@ -67,6 +68,7 @@ module PullReview
         sio.string
       end
 
+      # Return an Net::HTTP configured with timeout and https certificate verification if necessary
       def http(uri)
         Net::HTTP.new(uri.host, uri.port).tap do |http|
           if uri.scheme == 'https'
@@ -79,12 +81,14 @@ module PullReview
         end
       end
 
+      # white list the pullreview host for webmock
       def allow_pullreview_webmock
         if defined?(WebMock) && allow = WebMock::Config.instance.allow || []
           WebMock::Config.instance.allow = [*allow].push(config.api_host)
         end
       end
 
+      # white list the pullreview host for vcr
       def allow_pullreview_vcr
         if defined?(VCR)
           VCR.send(VCR.version.major < 2 ? :config : :configure) do |c|
