@@ -38,6 +38,8 @@ module PullReview
         }
       end
 
+      # return array of hash with coverage details for each files
+      # a side effect is calculating the coverage's totals
       def sources_coverage(result, totals)
         sources = result.files.map do |file|
           file_name = short_filename(file.filename)
@@ -45,7 +47,6 @@ module PullReview
           totals[:total] += file.lines.count
           totals[:covered] += file.covered_lines.count
           totals[:missed] += file.missed_lines.count
-
           {
             name: file_name,
             coverage_details: file.coverage.to_json,
