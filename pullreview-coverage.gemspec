@@ -5,7 +5,7 @@ require 'pullreview/coverage/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'pullreview-coverage'
-  spec.version       = Pullreview::Coverage::VERSION
+  spec.version       = PullReview::Coverage::VERSION
   spec.authors       = ['Stephan Mestach']
   spec.email         = ['stephan.mestach@8thcolor.com']
   spec.summary       = %q{Collect coverage information and send them to PullReview.com}
