@@ -6,19 +6,33 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'pullreview-coverage'
+```ruby
+group :test, :development do
+    gem 'pullreview-coverage', require: false
+end
+```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install pullreview-coverage
-
 ## Usage
 
-TODO: Write usage instructions here
+Adapt your SimpleCov Formatter listing to add the PullReview formatter.
+This formatter will post over https the coverage report and a few additional informations.
+
+```ruby
+require 'simplecov'
+require 'simplecov-rcov'
+require 'pullreview/coverage'
+
+formatters = [SimpleCov::Formatter::HTMLFormatter]
+formatters << SimpleCov::Formatter::RcovFormatter if ENV['BUILD_ID'] # sample jenkins-ci formatter
+formatters << PullReview::Coverage::Formatter
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
+
+```
 
 ## Contributing
 
