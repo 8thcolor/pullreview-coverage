@@ -12,6 +12,7 @@ module PullReview
         @config = config || Config.new
       end
 
+      # generate a random file in tmp dir with the same json payload (except pretty formatted)
       def publish(payload)
         file_path = File.join(Dir.tmpdir, "coverage-#{SecureRandom.uuid}.json")
         File.open(file_path, 'w') { |file| file.write(JSON.pretty_generate(payload)) }
