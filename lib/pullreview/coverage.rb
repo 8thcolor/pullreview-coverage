@@ -2,8 +2,12 @@
 module PullReview
   module Coverage
     def self.log(level, message, exception = nil)
-      puts "PullReview::Coverage : #{level} : #{message}"
-      puts "#{exception.message} #{exception.class} \n #{exception.backtrace.join("\n")}" if exception
+      full message = ["PullReview::Coverage : #{level} : #{message}"]
+      if exception
+        full message << "#{exception.message} #{exception.class}"
+        full message << exception.backtrace.join("\n")
+      end
+      puts full message.join("\n")
     end
   end
 end

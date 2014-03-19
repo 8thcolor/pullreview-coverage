@@ -1,6 +1,7 @@
 require 'uri'
 module PullReview
   module Coverage
+    # PullReview api coverage settings, allow overwriting via ENV for dev/testing
     class Config
       def api_host
         ENV['PULLREVIEW_HOST'] || 'www.pullreview.com'
