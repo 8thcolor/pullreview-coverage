@@ -34,13 +34,14 @@ module PullReview
         remotes = nil
         begin
           remotes = `git remote -v`.split(/\n/).map do |remote|
-            splits = remote.split(" ").compact
-            {name: splits[0], url: splits[1]}
+            splits = remote.split(' ').compact
+            { name: splits[0], url: splits[1] }
           end.uniq
-        rescue
+        rescue => e
+          PullReview::Coverage.log(:warn, 'failed to fetch remotes urls', e)
         end
+        remotes
       end
-
 
       # Cover case when fetching the branch name isn't obvious
       #   git clone --depth=50 git://github.com/rails/rails.git rails/rails
@@ -60,7 +61,7 @@ module PullReview
         elsif git_branch.to_s.strip.size > 0 && !git_branch.to_s.strip.start_with?('(')
           branch = git_branch
         end
-        return cleanup_branch(branch)
+        cleanup_branch(branch)
       end
 
       def cleanup_branch(branch)

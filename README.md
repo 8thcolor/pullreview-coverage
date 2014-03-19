@@ -8,7 +8,8 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :test, :development do
-    gem 'pullreview-coverage', require: false
+  # .... your other test gem like simplecov
+  gem 'pullreview-coverage', require: false
 end
 ```
 

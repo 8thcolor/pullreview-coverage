@@ -7,7 +7,7 @@ module PullReview
         def enabled?
           !!ENV['TRAVIS']
         end
-
+        #:nodoc
         def infos
           {
             name: 'travis-ci',
@@ -24,6 +24,7 @@ module PullReview
           !!ENV['CIRCLECI']
         end
 
+        #:nodoc
         def infos
           {
             name: 'circleci',
@@ -40,6 +41,7 @@ module PullReview
           !!ENV['SEMAPHORE']
         end
 
+        #:nodoc
         def infos
           {
             name: 'semaphore',
@@ -55,6 +57,7 @@ module PullReview
           !!ENV['JENKINS_URL']
         end
 
+        #:nodoc
         def infos
           {
             name: 'jenkins',
@@ -72,6 +75,7 @@ module PullReview
           ENV['CI_NAME'] =~ /codeship/i
         end
 
+        #:nodoc
         def infos
           {
             name: 'codeship',
@@ -89,6 +93,7 @@ module PullReview
           true
         end
 
+        #:nodoc
         def infos
           {}
         end

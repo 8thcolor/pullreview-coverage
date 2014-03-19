@@ -5,7 +5,7 @@ module PullReview
       def format(result)
         api.publish(to_payload(result))
       rescue => e
-        puts "#{e.message} : #{e.backtrace.join("\n")}"
+        PullReview::Coverage.log(:error, 'Coverage report failed #{api}', e)
       end
 
       def api
