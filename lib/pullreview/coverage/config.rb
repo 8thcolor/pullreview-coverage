@@ -16,7 +16,7 @@ module PullReview
       end
 
       def api_to_file?
-        !!ENV['PULLREVIEW_TO_FILE']
+        !!ENV['PULLREVIEW_COVERAGE_TO_FILE']
       end
 
       def api_read_timeout_in_seconds
@@ -33,6 +33,14 @@ module PullReview
 
       def user_agent
         "PullReview::Coverage.#{VERSION}"
+      end
+
+      def repo_token
+        ENV['PULLREVIEW_REPO_TOKEN']
+      end
+
+      def should_run?
+        !!repo_token
       end
 
       def api_uri

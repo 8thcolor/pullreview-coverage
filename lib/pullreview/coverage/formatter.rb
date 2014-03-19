@@ -5,14 +5,18 @@ module PullReview
     class Formatter
       # Simplecov callback to format report
       def format(result)
+        return unless config.should_run?
         api.publish(to_payload(result))
       rescue => e
         PullReview::Coverage.log(:error, 'Coverage report failed #{api}', e)
       end
 
+      def config
+        @config ||= PullReview::Coverage::Config.new
+      end
+
       # return based on config a remote api client or a local file implementation.
       def api
-        config = PullReview::Coverage::Config.new
         config.api_to_file? ? PullReview::Coverage::LocalFileApi.new(config) : PullReview::Coverage::ClientApi.new(config)
       end
 
@@ -21,7 +25,7 @@ module PullReview
         totals = Hash.new(0)
         sources = sources_coverage(result, totals)
         {
-          repo_token: ENV['PULLREVIEW_REPO_TOKEN'],
+          repo_token: config.repo_token,
           files_coverage: sources,
           run_at: result.created_at.to_i,
           covered_percent: round(result.covered_percent, 2),

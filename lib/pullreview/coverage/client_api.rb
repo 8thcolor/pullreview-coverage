@@ -51,6 +51,7 @@ module PullReview
       def zipped_post(uri, payload)
         request = Net::HTTP::Post.new(uri.path)
         request['User-Agent'] = config.user_agent
+        request['X-Repo-Token'] = config.repo_token
         request['Content-Type'] = 'application/json'
         request['Content-Encoding'] = 'gzip'
         request.body = compress(payload.to_json)

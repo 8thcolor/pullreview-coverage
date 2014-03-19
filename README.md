@@ -35,6 +35,18 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
 
 ```
 
+## How can I check the content submitted to pullreview
+
+In your project directory, launch
+
+```
+PULLREVIEW_REPO_TOKEN=4564654 PULLREVIEW_COVERAGE_TO_FILE=true rake test
+....
+PullReview::Coverage : info : Generated /tmp/coverage-8c2c37dd-8412-4137-9b38-7147c1662140.json
+```
+
+A json file will be generated in /tmp/ the content might change a little bit depending on your environment (dev, ci)
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/pullreview-coverage/fork )
