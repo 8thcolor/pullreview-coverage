@@ -10,6 +10,7 @@ module PullReview
         PullReview::Coverage.log(:error, 'Coverage report failed #{api}', e)
       end
 
+      # return based on config a remote api client or a local file implementation.
       def api
         config = PullReview::Coverage::Config.new
         config.api_to_file? ? PullReview::Coverage::LocalFileApi.new(config) : PullReview::Coverage::ClientApi.new(config)
