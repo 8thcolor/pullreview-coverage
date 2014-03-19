@@ -1,5 +1,7 @@
 module PullReview
   module Coverage
+    # A simplecov Formatter implementation
+    # see README.md for usage.
     class Formatter
       # Simplecov callback to format report
       def format(result)
