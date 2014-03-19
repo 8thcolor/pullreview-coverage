@@ -1,7 +1,4 @@
-require "pullreview/coverage/version"
-
-module Pullreview
-  module Coverage
-    # Your code goes here...
-  end
-end
+require 'pullreview/coverage/version'
+require 'pullreview/coverage/continuous_build'
+require 'pullreview/coverage/client_api'
+require 'pullreview/coverage/formatter'
