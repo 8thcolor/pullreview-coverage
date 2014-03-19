@@ -45,7 +45,7 @@ module PullReview
         end
       end
 
-      # return
+      # return Net::HTTP::Post with gzipped json payload
       def zipped_post(uri, payload)
         request = Net::HTTP::Post.new(uri.path)
         request['User-Agent'] = config.user_agent
@@ -58,8 +58,8 @@ module PullReview
 
       # return gzipped str
       def compress(str)
-        sio = StringIO.new("w")
-        # don't use the block notation for stringio
+        sio = StringIO.new('w')
+        # don't use the block notation for StringIO
         # https://bugs.ruby-lang.org/issues/8935
         gz = Zlib::GzipWriter.new(sio)
         gz.write(str)
