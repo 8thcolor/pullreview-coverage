@@ -15,6 +15,7 @@ module PullReview
         config.api_to_file? ? PullReview::Coverage::LocalFileApi.new(config) : PullReview::Coverage::ClientApi.new(config)
       end
 
+      # Transform simplecov result to huge hash.
       def to_payload(result)
         totals = Hash.new(0)
         sources = sources_coverage(result, totals)
@@ -40,7 +41,7 @@ module PullReview
       def sources_coverage(result, totals)
         sources = result.files.map do |file|
           file_name = short_filename(file.filename)
-          next
+          next if file_name.start_with?('vendor')
           totals[:total] += file.lines.count
           totals[:covered] += file.covered_lines.count
           totals[:missed] += file.missed_lines.count
