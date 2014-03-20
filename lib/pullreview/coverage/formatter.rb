@@ -8,7 +8,7 @@ module PullReview
         return unless config.should_run?
         api.publish(to_payload(result))
       rescue => e
-        PullReview::Coverage.log(:error, 'Coverage report failed #{api}', e)
+        PullReview::Coverage.log(:error, "Coverage report failed #{api}", e)
       end
 
       def config

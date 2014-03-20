@@ -98,6 +98,10 @@ module PullReview
           end
         end
       end
+
+      def to_s
+        "ClientApi : #{config.api_uri}"
+      end
     end
   end
 end
