@@ -17,6 +17,7 @@ module PullReview
         file_path = File.join(Dir.tmpdir, "coverage-#{SecureRandom.uuid}.json")
         File.open(file_path, 'w') { |file| file.write(JSON.pretty_generate(payload)) }
         PullReview::Coverage.log(:info, "Generated #{file_path}")
+        file_path
       end
     end
 
@@ -32,7 +33,8 @@ module PullReview
       def publish(payload)
         allow_pullreview_webmock
         allow_pullreview_vcr
-        post(payload)
+        response = post(payload)
+        "#{response.code} : #{response.body}"
       end
 
       private

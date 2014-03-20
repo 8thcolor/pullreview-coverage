@@ -6,9 +6,10 @@ module PullReview
       # Simplecov callback to format report
       def format(result)
         return unless config.should_run?
-        api.publish(to_payload(result))
+        response = api.publish(to_payload(result))
+        PullReview::Coverage.log(:info, "Coverage report ok #{api} : #{response}")
       rescue => e
-        PullReview::Coverage.log(:error, "Coverage report failed #{api}", e)
+        PullReview::Coverage.log(:error, "Coverage report submission failed #{api}", e)
       end
 
       def config
