@@ -39,6 +39,10 @@ module PullReview
         ENV['PULLREVIEW_REPO_TOKEN']
       end
 
+      def prefix_filename
+        ENV['PULLREVIEW_PREFIX_FILENAME']
+      end
+
       def should_run?
         !!repo_token
       end

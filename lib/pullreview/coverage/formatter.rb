@@ -69,9 +69,14 @@ module PullReview
       end
 
       def short_filename(filename)
-        return filename unless ::SimpleCov.root
+        return prefix(filename) unless ::SimpleCov.root
         filename = filename.gsub(::SimpleCov.root, '.').gsub(/^\.\//, '')
-        filename
+        prefix(filename)
+      end
+
+      def prefix(filename)
+        return filename unless @config.prefix_filename
+        "#{config.prefix_filename}/#{filename}"
       end
 
       def round(numeric, precision)
