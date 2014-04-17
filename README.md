@@ -51,7 +51,7 @@ A json file will be generated in /tmp/ the content might change a little bit dep
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/pullreview-coverage/fork )
+1. Fork it ( http://github.com/8thcolor/pullreview-coverage/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
