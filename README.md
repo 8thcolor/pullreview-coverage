@@ -37,6 +37,13 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
 
 ```
 
+Or if you do not use SimpleCov yet,
+
+```ruby
+require 'pullreview/coverage_reporter'
+PullReview::CoverageReporter.start
+```
+
 ## How can I check the content submitted to pullreview
 
 In your project directory, launch
