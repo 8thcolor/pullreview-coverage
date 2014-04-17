@@ -1,5 +1,7 @@
 # Pullreview::Coverage
 
+[![PullReview stats](https://www.pullreview.com/github/8thcolor/pullreview-coverage/badges/master.svg?type=full)](https://www.pullreview.com/github/8thcolor/pullreview-coverage/reviews/master)
+
 TODO: Write a gem description
 
 ## Installation
