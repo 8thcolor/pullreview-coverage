@@ -1,5 +1,6 @@
 require 'securerandom'
 require 'tmpdir'
+require "net/http"
 
 module PullReview
   module Coverage
