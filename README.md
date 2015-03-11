@@ -1,6 +1,7 @@
 # Pullreview::Coverage
 
-[![PullReview stats](https://www.pullreview.com/github/8thcolor/pullreview-coverage/badges/master.svg?type=full)](https://www.pullreview.com/github/8thcolor/pullreview-coverage/reviews/master)
+[![Gem Version](https://badge.fury.io/rb/pullreview-coverage.svg)](http://badge.fury.io/rb/pullreview-coverage)
+[![PullReview stats](https://www.pullreview.com/github/8thcolor/pullreview-coverage/badges/master.svg?)](https://www.pullreview.com/github/8thcolor/pullreview-coverage/reviews/master)
 
 With the Gem PullReview-Coverage, you can retrieve your **Ruby test coverage** into PullReview.
 
