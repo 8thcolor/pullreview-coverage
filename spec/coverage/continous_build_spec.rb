@@ -21,4 +21,20 @@ describe PullReview::Coverage::ContinousBuild do
       )
     end
   end
+
+  it 'should support semaphore' do
+    with_env(
+      'SEMAPHORE' => 'true',
+      'BRANCH_NAME' => 'feature/super',
+      'SEMAPHORE_BUILD_NUMBER' => '123',
+      'SEMAPHORE_REPO_SLUG' => 'account/project'
+    ) do
+      PullReview::Coverage::ContinousBuild.infos.must_equal(
+        name: 'semaphore',
+        branch: 'feature/super',
+        build_id: '123',
+        build_url: 'https://semaphoreci.com/account/project/branches/feature/super/builds/123'
+      )
+    end
+  end
 end

@@ -46,8 +46,19 @@ module PullReview
           {
             name: 'semaphore',
             branch: ENV['BRANCH_NAME'],
-            build_id: ENV['SEMAPHORE_BUILD_NUMBER']
+            build_id: ENV['SEMAPHORE_BUILD_NUMBER'],
+            build_url: build_url(
+                        ENV['SEMAPHORE_REPO_SLUG'],
+                        ENV['BRANCH_NAME'],
+                        ENV['SEMAPHORE_BUILD_NUMBER']
+                      )
           }
+        end
+
+        private
+
+        def build_url(repo_slug, branch_name, build_number)
+          "https://semaphoreci.com/#{repo_slug}/branches/#{branch_name}/builds/#{build_number}"
         end
       end
 
