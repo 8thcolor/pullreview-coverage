@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/pullreview-coverage.svg)](http://badge.fury.io/rb/pullreview-coverage)
 [![PullReview stats](https://www.pullreview.com/github/8thcolor/pullreview-coverage/badges/master.svg?)](https://www.pullreview.com/github/8thcolor/pullreview-coverage/reviews/master)
+[![Codeship](https://img.shields.io/codeship/5b76b590-a9f8-0132-ffc9-427bb4181a39.svg?style=flat-square)](https://codeship.com/projects/67847)
 
 With the Gem PullReview-Coverage, you can retrieve your **Ruby test coverage** into PullReview.
 
