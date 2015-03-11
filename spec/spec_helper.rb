@@ -8,8 +8,10 @@ require_relative '../lib/pullreview/coverage.rb'
 
 def with_env(options, &block)
   backup = ENV.to_h
+  ENV.clear
   ENV.update(options)
   yield
 ensure
+  ENV.clear
   ENV.update(backup)
 end
