@@ -90,9 +90,9 @@ module PullReview
 
       # white list the pullreview host for webmock
       def allow_pullreview_webmock
-        if defined?(WebMock) && allow = WebMock::Config.instance.allow || []
-          WebMock::Config.instance.allow = [*allow].push(config.api_host)
-        end
+        return unless defined?(WebMock)
+        allow = WebMock::Config.instance.allow || []
+        WebMock::Config.instance.allow = [*allow].push(config.api_host) if allow
       end
 
       # white list the pullreview host for vcr

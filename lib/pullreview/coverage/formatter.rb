@@ -68,17 +68,20 @@ module PullReview
         sources
       end
 
+      # handle correctly filename considering root of the project and prefix
       def short_filename(filename)
         return prefix(filename) unless ::SimpleCov.root
         filename = filename.gsub(::SimpleCov.root, '.').gsub(/^\.\//, '')
         prefix(filename)
       end
 
+      # add a prefix to a filename
       def prefix(filename)
         return filename unless @config.prefix_filename
         "#{config.prefix_filename}/#{filename}"
       end
 
+      # wrap Float.round
       def round(numeric, precision)
         Float(numeric).round(precision)
       end
