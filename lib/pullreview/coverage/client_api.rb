@@ -1,3 +1,4 @@
+require 'certifi'
 require 'securerandom'
 require 'tmpdir'
 require 'net/http'
@@ -79,6 +80,7 @@ module PullReview
           if uri.scheme == 'https'
             http.use_ssl = true
             http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+            http.ca_file = Certifi.where
             http.verify_depth = 5
           end
           http.open_timeout = config.api_open_timeout_in_seconds
