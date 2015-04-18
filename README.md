@@ -91,6 +91,32 @@ PullReview::Coverage : info : Generated /tmp/coverage-8c2c37dd-8412-4137-9b38-71
 
 A JSON file will be generated in `/tmp/`. The content might change a little bit depending on your environment (dev, CI).
 
+### 3. I got a SSL error when sending the report. How can I fix it?
+
+If you got an error similar to the following
+```Text
+PullReview::Coverage : error : Coverage report submission failed ClientApi : https://www.pullreview.com/api/coverage
+SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed OpenSSL::SSL::SSLError
+...
+```
+
+there is a good chance you don't have an up to date bundle of [root certificates](https://en.wikipedia.org/wiki/Root_certificate).
+As consequences, when you try to open a `https` resource and use the `Net::HTTP` module, the peer certificate cannot
+be successfully verified, what gives you the previous error output.
+
+Depending on your system, there are different ways to deal with that problem:
+
+* [Download an up-to-date bundle of root certificates and directly patch the 
+  `Net::HTTP`](http://stackoverflow.com/a/16983443/831180)
+* If you use rvm, `rvm osx-ssl-certs update`.
+* Whatever your OS, the generic solution consists in [downloading a up-to-date bundle of root certifcates and inform
+  Ruby where it is](http://stackoverflow.com/q/4528101/831180).
+* If you are on windows, [download a up-to-date root certifcates and inform Ruby where it 
+  is](https://gist.github.com/fnichol/867550).
+
+Soon we will implement for you the first solution, so you shouldn't experiment anymore that issue.
+
+
 ## Contributing
 
 1. Fork it ( http://github.com/8thcolor/pullreview-coverage/fork )
