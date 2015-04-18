@@ -114,8 +114,8 @@ Depending on your system, there are different ways to deal with that problem:
 * If you are on windows, [download a up-to-date root certifcates and inform Ruby where it 
   is](https://gist.github.com/fnichol/867550).
 
-Soon we will implement for you the first solution, so you shouldn't experiment anymore that issue.
-
+We have implemetend the first solution (since 0.0.4) in the gem itself. If you still have the problem, please report
+an issue.
 
 ## Contributing
 
